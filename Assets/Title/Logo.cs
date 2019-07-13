@@ -13,9 +13,9 @@ namespace Game.Title
     {
         private const string TITLE_LOGO      = "CollectCode";
         private const float  FADEIN_INTERVAL = 0.25f;
-        private bool isFadedOut = false;
+        private bool _isFadedOut = false;
 
-        private int currentColumn = 1;
+        private int _currentColumn = 1;
 
         [SerializeField]
         private Text _fadingLogo;
@@ -32,26 +32,26 @@ namespace Game.Title
             {
                 yield return new WaitForSeconds(FADEIN_INTERVAL);
 
-                _fadingLogo.text = TITLE_LOGO.Substring(0, currentColumn);
-                currentColumn++;
-                if(currentColumn > TITLE_LOGO.Length) { yield break; }
+                _fadingLogo.text = TITLE_LOGO.Substring(0, _currentColumn);
+                _currentColumn++;
+                if(_currentColumn > TITLE_LOGO.Length) { yield break; }
             }
         }
 
         public IEnumerator StartFadeout()
         {
-            currentColumn--;
+            _currentColumn--;
 
             // タイトルを交代させる
             for(;;)
             {
                 yield return new WaitForSeconds(FADEIN_INTERVAL);
 
-                _fadingLogo.text = TITLE_LOGO.Substring(0, currentColumn);
-                currentColumn--;
-                if(currentColumn < 0)
+                _fadingLogo.text = TITLE_LOGO.Substring(0, _currentColumn);
+                _currentColumn--;
+                if(_currentColumn < 0)
                 {
-                    isFadedOut = true;
+                    _isFadedOut = true;
                     yield break;
                 }
             }
@@ -59,7 +59,7 @@ namespace Game.Title
 
         public bool IsComplete
         {
-            get { return isFadedOut; }
+            get { return _isFadedOut; }
         }
     }
 }

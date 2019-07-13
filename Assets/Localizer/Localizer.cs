@@ -19,9 +19,9 @@ namespace Game.Localization
 
         /// <summary>
         /// ローカライズデータを取得する
-        /// </summary>
         /// <returns>ローカライズされた文字列。識別子に対応するローカライズがないか、既定の言語が設定されていない場合は空文字。</returns>
         /// <param name="key">データの識別子</param>
+        /// </summary>
         public string GetLocalize(string key)
         {
             bool hasCurrentLanguageAndKey =

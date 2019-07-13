@@ -11,7 +11,7 @@ namespace Game.Title
 
         private GameObject _me;
         private Transform _transform;
-        private bool isFadedOut = false;
+        private bool _isFadedOut = false;
 
         [SerializeField]
         private GenericButton _button;
@@ -63,12 +63,12 @@ namespace Game.Title
 
                 if(pos.y < -800.0f)
                 {
-                    isFadedOut = true;
+                    _isFadedOut = true;
                     yield break;
                 }
             }
         }
 
-        public bool IsComplete { get { return isFadedOut; } }
+        public bool IsComplete { get { return _isFadedOut; } }
     }
 }
