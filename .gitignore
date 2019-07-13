@@ -1,0 +1,6 @@
+/Library/
+/Temp/
+.DS_Store
+/.vs/
+/Assets/.DS_Store
+/Assets/StreamingAssets/Languages/.DS_Store
