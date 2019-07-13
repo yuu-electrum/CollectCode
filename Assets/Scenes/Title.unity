@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -221}
+  m_AnchoredPosition: {x: 0, y: -284}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109286148
@@ -204,7 +204,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 109286149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820277494}
+        m_MethodName: OnClickStartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &109286149
@@ -317,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bceebe3d0cd04583b14534774584d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 109286152}
 --- !u!1 &157537750
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -256}
+  m_AnchoredPosition: {x: 0, y: -322}
   m_SizeDelta: {x: 350, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &656365061
@@ -726,6 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820277493}
   - component: {fileID: 820277494}
+  - component: {fileID: 820277495}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -765,6 +778,19 @@ MonoBehaviour:
   - {fileID: 1930598346}
   - {fileID: 109286146}
   _cursor: {fileID: 586803019}
+  _fader: {fileID: 820277495}
+--- !u!114 &820277495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820277492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0a2470141ba4e3b989aa6e9f535d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163476614
 GameObject:
   m_ObjectHideFlags: 0
