@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Fader.cs" />
     <Compile Include="Assets\Game\FileSeparator.cs" />
+    <Compile Include="Assets\Game\GameManager.cs" />
     <Compile Include="Assets\GenericButton.cs" />
     <Compile Include="Assets\IFade.cs" />
     <Compile Include="Assets\Localizer\Localizer.cs" />
