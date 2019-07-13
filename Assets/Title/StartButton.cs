@@ -12,6 +12,9 @@ namespace Game.Title
         private GameObject _me;
         private Transform _transform;
 
+        [SerializeField]
+        private GenericButton _button;
+
         public void Start()
         {
             _me = this.gameObject;
@@ -20,14 +23,29 @@ namespace Game.Title
 
         public IEnumerator StartFadein()
         {
-            var currentPos = _transform.localPosition;
+
+            // GenericButtonのTextコンポーネントを取得する
+            Text t = _button.Label;
+            if(t == null) { yield break; }
+
+            // ボタンのラベルのパラメータを取得する
+            int frame = 0;
+            Color col = t.color;
+
+            // 最初は透明
+            col.a = 0.0f;
+
+            // nフレームで完全に不透明になる
+            const int PERIOD = 160;
 
             for(;;)
             {
-                yield return new WaitForSeconds(0.01f);
+                col.a = 1.0f * ((float)frame / (float)PERIOD);
+                t.color = col;
+                frame++;
 
-                currentPos.x += 0.05f;
-                _transform.localPosition = currentPos;
+                if(frame > PERIOD) { yield break; }
+                yield return null;
             }
         }
 
