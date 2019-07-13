@@ -5,10 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-namespace Game
+namespace Game.Playable
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField]
+        ChunkFactory _factory;
+
+        [SerializeField]
+        GameObject _chunkParent;
+
         public void Start()
         {
             // .metaファイルを除いたソースコードを列挙する
@@ -20,6 +26,10 @@ namespace Game
 
             // 列挙されたコードの中から一つを選ぶ
             var index   = UnityEngine.Random.Range(0, targets.Count);
+
+            _factory.Initialize(targets[index]);
+            _factory.GetNextChunks(4, _chunkParent.transform);
+            _factory.GetNextChunks(4, _chunkParent.transform);
         }
     }
 }
