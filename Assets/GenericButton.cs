@@ -6,14 +6,18 @@ using UnityEngine.UI;
 
 namespace Game
 {
-    public class GenericButton
+    /// <summary>
+    /// 一般的なボタンを表すクラス
+    /// </summary>
+    public class GenericButton : MonoBehaviour
     {
+        [SerializeField]
         private Button _button;
+
+        [SerializeField]
         private Text _label;
 
-        public void Start()
-        {
-
-        }
+        public Button Button { get { return _button; } }
+        public Text   Label  { get { return _label;  } }
     }
 }

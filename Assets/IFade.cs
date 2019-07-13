@@ -8,8 +8,8 @@ namespace Game
 {
     public interface IFade
     {
-        void StartFadein();
-        void StartFadeout();
+        IEnumerator StartFadein();
+        IEnumerator StartFadeout();
         bool IsComplete { get; }
     }
 }

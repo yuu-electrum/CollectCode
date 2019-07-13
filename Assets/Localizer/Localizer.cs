@@ -10,27 +10,58 @@ namespace Game.Localization
         /// <summary>
         /// ローカライズデータを維持するコレクション
         /// </summary>
-        private Dictionary<string, string> _localizes;
+        private Dictionary<string, Dictionary<string, string>> _localizes;
+
+        /// <summary>
+        /// 現在設定されている言語
+        /// </summary>
+        private string currentLanguage = null;
 
         /// <summary>
         /// ローカライズデータを取得する
         /// </summary>
+        /// <returns>ローカライズされた文字列。識別子に対応するローカライズがないか、既定の言語が設定されていない場合は空文字。</returns>
         /// <param name="key">データの識別子</param>
         public string GetLocalize(string key)
         {
-            return (_localizes.ContainsKey(key)) ? _localizes[key] : "A localization with a specified identifier seems not defined";
+            bool hasCurrentLanguageAndKey =
+                currentLanguage != null                 &&
+                _localizes.ContainsKey(currentLanguage) &&
+                _localizes[currentLanguage].ContainsKey(key);
+
+            return (hasCurrentLanguageAndKey) ? _localizes[currentLanguage][key] : "";
+        }
+
+        /// <summary>
+        /// 書式付き文字列をフォーマットして返す
+        /// </summary>
+        public string GetFormattedString(string key, params string[] args)
+        {
+            return string.Format(GetLocalize(key), args);
+        }
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public Localizer()
+        {
+            _localizes = new Dictionary<string, Dictionary<string, string>>();
         }
 
         /// <summary>
         /// ローカライズデータを読み込む
         /// </summary>
-        /// <param name="localizeTextFilePath">読み込むローカライズテキストデータのパス</param>
-        public Localizer(string localizeTextFilePath)
+        /// <returns>ファイルが存在しない場合はfalse。成功したらtrue。</returns>
+        public bool LoadLocalize(string localizeTextFilePath, string lang)
         {
+            if(!System.IO.File.Exists(localizeTextFilePath))
+            {
+                return false;
+            }
+
             // 生データ
             var raw = System.IO.File.ReadAllLines(localizeTextFilePath);
-
-            _localizes = new Dictionary<string, string>();
+            _localizes.Add(lang, new Dictionary<string, string>());
 
             // 各行を空白で区切りコレクションに入れる
             foreach(var line in raw)
@@ -38,8 +69,19 @@ namespace Game.Localization
                 var ss = line.Split(" ".ToCharArray());
                 if(ss.Length <= 1) { continue; }
 
-                _localizes.Add(ss[0], ss[1]);
+                _localizes[lang].Add(ss[0], ss[1]);
             }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 既定の言語を取得または設定する
+        /// </summary>
+        public string Language
+        {
+            get { return currentLanguage;  }
+            set { currentLanguage = value; }
         }
     }
 }

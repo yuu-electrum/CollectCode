@@ -6,19 +6,29 @@ using UnityEngine.UI;
 
 namespace Game.Title
 {
-    public class Start : MonoBehaviour, IFade
+    public class StartButton : MonoBehaviour, IFade
     {
 
-        private GameObject me;
+        private GameObject _me;
+        private Transform _transform;
 
-        public void 
+        public void Start()
         {
-            me = this.gameObject;
+            _me = this.gameObject;
+            _transform = _me.transform;
         }
 
         public IEnumerator StartFadein()
         {
+            var currentPos = _transform.localPosition;
 
+            for(;;)
+            {
+                yield return new WaitForSeconds(0.01f);
+
+                currentPos.x += 0.05f;
+                _transform.localPosition = currentPos;
+            }
         }
 
         public IEnumerator StartFadeout()
