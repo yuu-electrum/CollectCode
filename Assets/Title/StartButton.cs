@@ -11,6 +11,7 @@ namespace Game.Title
 
         private GameObject _me;
         private Transform _transform;
+        private bool isFadedOut = false;
 
         [SerializeField]
         private GenericButton _button;
@@ -23,7 +24,6 @@ namespace Game.Title
 
         public IEnumerator StartFadein()
         {
-
             // GenericButtonのTextコンポーネントを取得する
             Text t = _button.Label;
             if(t == null) { yield break; }
@@ -51,9 +51,24 @@ namespace Game.Title
 
         public IEnumerator StartFadeout()
         {
-            yield return null;
+            var pos = this.transform.localPosition;
+
+            // 単に下にやるだけ
+            for(;;)
+            {
+                pos.y -= 2.5f;
+                this.transform.localPosition = pos;
+
+                yield return null;
+
+                if(pos.y < -800.0f)
+                {
+                    isFadedOut = true;
+                    yield break;
+                }
+            }
         }
 
-        public bool IsComplete { get { return true;} }
+        public bool IsComplete { get { return isFadedOut; } }
     }
 }

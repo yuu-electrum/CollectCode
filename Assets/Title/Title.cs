@@ -20,6 +20,9 @@ namespace Game.Title
         [SerializeField]
         private GameObject _cursor;
 
+        [SerializeField]
+        private Fader _fader;
+
         public void Start()
         {
             // ローカライザーの設定
@@ -29,16 +32,24 @@ namespace Game.Title
             _localizer.Language = "ja";
 
             _startButton.Label.text = _localizer.GetLocalize("StartButton");
+            
+            _fader.Initialize(_fadingObjs);
+            _fader.StartFadein();
+        }
 
-            // フェードインを開始する
-            if(_fadingObjs.Length <= 0) { return; }
-            foreach(var obj in _fadingObjs)
+        public void Update()
+        {
+            // フェードアウトがすべて終わった時点で画面を遷移させる
+            if(_fader.InCompleteAllObjectFadeout)
             {
-                IFade f;
-                if((f = obj.GetComponent<IFade>()) == null) continue;
-
-                StartCoroutine(f.StartFadein());
+                
             }
+        }
+
+        public void OnClickStartButton()
+        {
+            _cursor.SetActive(false);
+            _fader.StartFadeout();
         }
 
         public void OnPointerEnterAtStartButton()
