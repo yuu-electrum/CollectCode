@@ -1,2 +1,5 @@
 StartButton スタート
+Remaining 残り{0}個
 CurrentPhase フェーズ{0}(全{1}フェーズ)
+GameOver ゲームオーバー
+Retry やり直す
