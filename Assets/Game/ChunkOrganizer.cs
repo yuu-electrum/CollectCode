@@ -15,11 +15,6 @@ namespace Game.Playable
         [SerializeField]
         FarViewportToWorldPoint _wpViewport;
 
-        public void Start()
-        {
-            _wpViewport.UpdatePosition();
-        }
-
         public void Organize(List<GameObject> organizedObjects)
         {
             foreach(var obj in organizedObjects)

@@ -19,12 +19,10 @@ namespace Game.Playable
 
         public void Start()
         {
-            _wpViewport.UpdatePosition();
-
             var obj = Instantiate(_origin);
             var pos = new Vector3(
                 _wpViewport.TopLeft.x + (_wpViewport.TopRight.x - _wpViewport.TopLeft.x) / 2.0f,
-                _wpViewport.BottomLeft.y + 256.0f,
+                _wpViewport.TopLeft.y,
                 _wpViewport.TopLeft.z
             );
 

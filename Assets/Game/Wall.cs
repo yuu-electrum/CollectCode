@@ -24,8 +24,54 @@ namespace Game.Playable
         {
             _wpViewpoint.UpdatePosition();
 
+            var verticalScale   = _wpViewpoint.TopLeft.y  - _wpViewpoint.BottomLeft.y;
+            var horizontalScale = _wpViewpoint.TopRight.x - _wpViewpoint.TopLeft.x;
+
+            var walls = new List<WallObject>()
+            {
+                // 左
+                new WallObject(
+                    new Vector3(_wpViewpoint.TopLeft.y - _wpViewpoint.BottomLeft.y, 0.0f, 0.0f),
+                    new Vector3(
+                        _wpViewpoint.TopLeft.x,
+                        _wpViewpoint.TopLeft.y - verticalScale / 2.0f,
+                        _wpViewpoint.TopLeft.z
+                    ),
+                    new Vector3(0.0f, 0.0f, -90.0f)
+                ),
+                // 右
+                new WallObject(
+                    new Vector3(_wpViewpoint.TopLeft.y - _wpViewpoint.BottomLeft.y, 0.0f, 0.0f),
+                    new Vector3(
+                        _wpViewpoint.TopRight.x,
+                        _wpViewpoint.TopLeft.y - verticalScale / 2.0f,
+                        _wpViewpoint.TopLeft.z
+                    ),
+                    new Vector3(0.0f, 0.0f, 90.0f)
+                ),
+                // 上
+                new WallObject(
+                    new Vector3(horizontalScale, 0.0f, 0.0f),
+                    new Vector3(
+                        _wpViewpoint.TopRight.x - horizontalScale / 2.0f,
+                        _wpViewpoint.TopLeft.y,
+                        _wpViewpoint.TopLeft.z
+                    ),
+                    new Vector3(0.0f, 0.0f, -180.0f)
+                )
+            };
+
+            foreach(var w in walls)
+            {
+                var obj = Instantiate(_origin, _root.transform);
+                obj.transform.Rotate(w.Rotation);
+
+                obj.transform.position   = w.Position;
+                obj.transform.localScale = w.Scale;
+            }
+
             /*
-            var origScale = _origin.transform.localScale;
+            
             origScale.x = _wpViewpoint.TopLeft.y - _wpViewpoint.BottomLeft.y;
 
             var obj = Instantiate(_origin, _root.transform);
@@ -41,6 +87,20 @@ namespace Game.Playable
             obj.transform.position   = pos;
             obj.transform.localScale = origScale;
             */
+        }
+    }
+
+    public class WallObject
+    {
+        public Vector3 Scale      { get; set; }
+        public Vector3 Position { get; set; }
+        public Vector3 Rotation { get; set; }
+
+        public WallObject(Vector3 scale, Vector3 pos, Vector3 rotation)
+        {
+            Scale    = scale;
+            Position = pos;
+            Rotation = rotation;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Game.Playable
 
         public void Start()
         {
-            Speed = 1.0f;
+            Speed = 8.0f;
         }
 
         public void Update()

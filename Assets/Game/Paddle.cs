@@ -20,11 +20,9 @@ namespace Game.Playable
         {
             var pos = new Vector3();
 
-            _wpViewport.UpdatePosition();
-
             // 画面の中央に配置する
             pos.x = _wpViewport.TopLeft.x + ((_wpViewport.TopRight.x - _wpViewport.TopLeft.x) / 2.0f);
-            pos.y = _wpViewport.BottomLeft.y;
+            pos.y = _wpViewport.BottomLeft.y + 64.0f;
             pos.z = _wpViewport.TopLeft.z;
 
             this.transform.position = pos;

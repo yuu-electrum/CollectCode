@@ -130,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9364466}
   - component: {fileID: 9364468}
-  - component: {fileID: 9364467}
   m_Layer: 0
   m_Name: BallFactory
   m_TagString: Untagged
@@ -152,19 +151,6 @@ Transform:
   m_Father: {fileID: 1480148383}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9364467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9364465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369fc798efa794104acb7636df408d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 1648517284}
 --- !u!114 &9364468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00fd3b92f44f6454da90559bb032cb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wpViewport: {fileID: 9364467}
+  _wpViewport: {fileID: 1060187622}
   _origin: {fileID: 7069143094727279960, guid: b67c9e503b8a042e9b9659b6831e4385, type: 3}
 --- !u!1 &274967600
 GameObject:
@@ -353,7 +339,6 @@ GameObject:
   m_Component:
   - component: {fileID: 416180753}
   - component: {fileID: 416180755}
-  - component: {fileID: 416180754}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -375,19 +360,6 @@ Transform:
   m_Father: {fileID: 1480148383}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &416180754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416180752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369fc798efa794104acb7636df408d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 1648517284}
 --- !u!114 &416180755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _root: {fileID: 416180752}
   _origin: {fileID: 1464594069267086765, guid: d71d12a7d529041d8a2f7124f103971e, type: 3}
-  _wpViewpoint: {fileID: 416180754}
+  _wpViewpoint: {fileID: 1060187622}
 --- !u!1 &505908491
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 613784789}
   - component: {fileID: 613784790}
-  - component: {fileID: 613784791}
   m_Layer: 0
   m_Name: ChunkOrganizer
   m_TagString: Untagged
@@ -491,20 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d287062083a45405595a63159201c6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wpViewport: {fileID: 613784791}
---- !u!114 &613784791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613784788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 369fc798efa794104acb7636df408d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 1648517284}
+  _wpViewport: {fileID: 1060187622}
 --- !u!1001 &761836630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -574,6 +532,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d71d12a7d529041d8a2f7124f103971e, type: 3}
+--- !u!1 &1060187619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060187620}
+  - component: {fileID: 1060187622}
+  - component: {fileID: 1060187621}
+  m_Layer: 0
+  m_Name: FarViewportObserver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1060187620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060187619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1480148383}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1060187621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060187619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d5d71104cb744e896c3e1517f58309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wpViewport: {fileID: 1060187622}
+--- !u!114 &1060187622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060187619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369fc798efa794104acb7636df408d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1648517284}
 --- !u!1 &1235700678
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +620,7 @@ Transform:
   m_GameObject: {fileID: 1235700678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1480148383}
   m_RootOrder: 5
@@ -728,6 +744,7 @@ Transform:
   - {fileID: 274967602}
   - {fileID: 1235700679}
   - {fileID: 416180753}
+  - {fileID: 1060187620}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

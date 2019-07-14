@@ -26,6 +26,11 @@ namespace Game
 
         public Camera Camera { get { return _camera; } }
 
+        public void Start()
+        {
+            UpdatePosition();
+        }
+
         public void UpdatePosition()
         {
             if(_camera == null) { return; }
