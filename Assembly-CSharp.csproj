@@ -62,9 +62,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Fader.cs" />
+    <Compile Include="Assets\FarViewportObserver.cs" />
+    <Compile Include="Assets\FarViewportToWorldPoint.cs" />
+    <Compile Include="Assets\Game\Ball.cs" />
+    <Compile Include="Assets\Game\BallFactory.cs" />
+    <Compile Include="Assets\Game\Chunk.cs" />
+    <Compile Include="Assets\Game\ChunkFactory.cs" />
+    <Compile Include="Assets\Game\ChunkOrganizer.cs" />
+    <Compile Include="Assets\Game\FileSeparator.cs" />
+    <Compile Include="Assets\Game\GameManager.cs" />
+    <Compile Include="Assets\Game\LifeManager.cs" />
+    <Compile Include="Assets\Game\Paddle.cs" />
+    <Compile Include="Assets\Game\UI\CanvasManager.cs" />
+    <Compile Include="Assets\Game\UI\Phase.cs" />
+    <Compile Include="Assets\Game\UI\Scroller.cs" />
+    <Compile Include="Assets\Game\Wall.cs" />
     <Compile Include="Assets\GenericButton.cs" />
+    <Compile Include="Assets\IDestroyable.cs" />
     <Compile Include="Assets\IFade.cs" />
     <Compile Include="Assets\Localizer\Localizer.cs" />
+    <Compile Include="Assets\Timer.cs" />
     <Compile Include="Assets\Title\Logo.cs" />
     <Compile Include="Assets\Title\StartButton.cs" />
     <Compile Include="Assets\Title\Title.cs" />

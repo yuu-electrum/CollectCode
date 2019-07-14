@@ -19,9 +19,9 @@ namespace Game.Localization
 
         /// <summary>
         /// ローカライズデータを取得する
-        /// </summary>
         /// <returns>ローカライズされた文字列。識別子に対応するローカライズがないか、既定の言語が設定されていない場合は空文字。</returns>
         /// <param name="key">データの識別子</param>
+        /// </summary>
         public string GetLocalize(string key)
         {
             bool hasCurrentLanguageAndKey =
@@ -35,7 +35,7 @@ namespace Game.Localization
         /// <summary>
         /// 書式付き文字列をフォーマットして返す
         /// </summary>
-        public string GetFormattedString(string key, params string[] args)
+        public string GetFormattedString(string key, params object[] args)
         {
             return string.Format(GetLocalize(key), args);
         }

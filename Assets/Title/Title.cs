@@ -42,7 +42,7 @@ namespace Game.Title
             // フェードアウトがすべて終わった時点で画面を遷移させる
             if(_fader.InCompleteAllObjectFadeout)
             {
-                
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
         }
 

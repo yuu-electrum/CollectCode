@@ -1,1 +1,2 @@
 StartButton スタート
+CurrentPhase フェーズ{0}(全{1}フェーズ)

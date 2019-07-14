@@ -1,4 +1,6 @@
 .DS_Store
+/Assets/StreamingAssets/.DS_Store
 /Library/
 /Temp/
 /.vs/
+/obj/
