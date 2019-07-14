@@ -28,6 +28,8 @@ namespace Game.Title
             // ローカライザーの設定
             _localizer = new Localization.Localizer();
 
+            
+
             _localizer.LoadLocalize(Application.streamingAssetsPath + "/Languages/ja.txt", "ja");
             _localizer.Language = "ja";
 

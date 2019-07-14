@@ -44,7 +44,6 @@ namespace Game.Playable
 
         public void Start()
         {
-
             // .metaファイルを除いたソースコードを列挙する
             var directories = new List<string>(
                 System.IO.Directory.GetFiles(Application.streamingAssetsPath + "/SourcecodeFiles/")
@@ -119,6 +118,11 @@ namespace Game.Playable
             }
 
             _generatedChunks.RemoveAll(obj => obj == null);
+        }
+
+        public void OnDestroy()
+        {
+            PlayerPrefs.Save();
         }
     }
 }
