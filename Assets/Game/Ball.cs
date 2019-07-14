@@ -17,16 +17,13 @@ namespace Game.Playable
         public float Speed
         {
             get { return _speed;  }
-            set
-            {
-                _speed = value;
-                _dir = new Vector3(-1.0f, -1.0f, 0.0f).normalized * Speed;
-            }
+            set { _speed = value; }
         }
 
         public void Start()
         {
             Speed = 8.0f;
+            _dir = new Vector3(-1.0f, -1.0f, 0.0f).normalized * Speed;
         }
 
         public void Update()
@@ -36,7 +33,17 @@ namespace Game.Playable
 
         public void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.name);
+            if(other.tag == "CodeChunk")
+            {
+                // 破壊可能なオブジェクトであった場合は削除する
+                other.gameObject.GetComponent<IDestroyable>().Destroy();
+                return;
+            }
+
+            if(other.tag == "Ball")
+            {
+                return;
+            }
 
             // ボールを反射させる
             var colliderVec = other.transform.up;

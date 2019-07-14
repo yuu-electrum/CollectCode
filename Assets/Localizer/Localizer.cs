@@ -35,7 +35,7 @@ namespace Game.Localization
         /// <summary>
         /// 書式付き文字列をフォーマットして返す
         /// </summary>
-        public string GetFormattedString(string key, params string[] args)
+        public string GetFormattedString(string key, params object[] args)
         {
             return string.Format(GetLocalize(key), args);
         }

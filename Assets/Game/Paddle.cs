@@ -9,12 +9,15 @@ namespace Game.Playable
     /// <summary>
     /// プレイヤーが動かせる板
     /// </summary>
-    public class Paddle : MonoBehaviour
+    public class Paddle : MonoBehaviour, IFade
     {
         [SerializeField]
         private FarViewportToWorldPoint _wpViewport;
 
         private const float VELOCITY = 15.0f; // 移動速度
+
+        private bool isFadingOut = false;
+        private bool isFadedOut  = false;
 
         public void Start()
         {
@@ -51,6 +54,35 @@ namespace Game.Playable
             if(vp.x > 1.0f) { vp.x = 1.0f; }
 
             this.transform.position = _wpViewport.Camera.ViewportToWorldPoint(vp);
+        }
+
+        public IEnumerator StartFadein()
+        {
+            yield break;
+        }
+
+        public IEnumerator StartFadeout()
+        {
+            var pos = this.transform.position;
+
+            for(;;)
+            {
+                // フェードアウト処理
+                pos.y -= VELOCITY * 2.0f;
+                Vector3 vp = _wpViewport.Camera.WorldToViewportPoint(pos);
+                this.transform.position = _wpViewport.Camera.ViewportToWorldPoint(vp);
+
+                if(vp.y < 0.0f) { yield break; }
+                yield return null;
+            }
+        }
+
+        public bool IsComplete
+        {
+            get
+            {
+                return !isFadingOut && isFadedOut;
+            }
         }
     }
 }

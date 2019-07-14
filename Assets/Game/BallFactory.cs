@@ -17,16 +17,32 @@ namespace Game.Playable
         [SerializeField]
         private GameObject _origin;
 
+        private List<GameObject> _balls;
+
         public void Start()
+        {
+            _balls = new List<GameObject>();
+        }
+
+        public void Generate()
         {
             var obj = Instantiate(_origin);
             var pos = new Vector3(
                 _wpViewport.TopLeft.x + (_wpViewport.TopRight.x - _wpViewport.TopLeft.x) / 2.0f,
-                _wpViewport.TopLeft.y,
+                _wpViewport.TopLeft.y - 32.0f,
                 _wpViewport.TopLeft.z
             );
 
             obj.transform.position = pos;
+            _balls.Add(obj);
+        }
+
+        public bool IsAllOutOfStage
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }

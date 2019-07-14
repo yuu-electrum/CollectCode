@@ -19,9 +19,22 @@ namespace Game.Playable
         ChunkOrganizer _organizer;
 
         [SerializeField]
+        BallFactory _ball;
+
+        [SerializeField]
         GameObject _chunkParent;
 
-        private SortedDictionary<int, string> _collectedChunks;
+        [SerializeField]
+        GameObject[] _fadingObjs;
+
+        [SerializeField]
+        Fader _fader;
+
+        // 再生成したチャンク数
+        public List<GameObject> _generatedChunks;
+
+        // ゲームが終了しているか
+        private bool _finished = false;
 
         public void Start()
         {
@@ -35,9 +48,39 @@ namespace Game.Playable
             // 列挙されたコードの中から一つを選ぶ
             var index   = UnityEngine.Random.Range(0, targets.Count);
 
+            // チャンクの生成準備をする
             _factory.Initialize(targets[index]);
 
-            _collectedChunks = new SortedDictionary<int, string>();
+            _fader.Initialize(_fadingObjs);
+
+            // 最初のボールを生成する
+            _ball.Generate();
+
+            _generatedChunks = new List<GameObject>();
+        }
+
+        public void Update()
+        {
+            Debug.Log(_factory.CurrentState);
+
+            if(_generatedChunks.Count == 0 && _factory.CurrentState != ChunkFactory.State.FINISHED)
+            {
+                // 次のフェーズが取得できなかったらゲーム終了
+                var objs = _factory.GetNextPhase();
+                if(objs == null) return;
+
+                _organizer.Organize(objs);
+                _generatedChunks.AddRange(objs);
+            }
+
+            if(!_finished && _factory.CurrentState == ChunkFactory.State.FINISHED)
+            {
+                // ゲームの終了処理をする
+                _finished = true;
+                _fader.StartFadeout();
+            }
+
+            _generatedChunks.RemoveAll(obj => obj == null);
         }
     }
 }

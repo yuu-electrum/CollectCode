@@ -67,6 +67,7 @@
     <Compile Include="Assets\FarViewportToWorldPoint.cs" />
     <Compile Include="Assets\Game\Ball.cs" />
     <Compile Include="Assets\Game\BallFactory.cs" />
+    <Compile Include="Assets\Game\CanvasManager.cs" />
     <Compile Include="Assets\Game\Chunk.cs" />
     <Compile Include="Assets\Game\ChunkFactory.cs" />
     <Compile Include="Assets\Game\ChunkOrganizer.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Game\Paddle.cs" />
     <Compile Include="Assets\Game\Wall.cs" />
     <Compile Include="Assets\GenericButton.cs" />
+    <Compile Include="Assets\IDestroyable.cs" />
     <Compile Include="Assets\IFade.cs" />
     <Compile Include="Assets\Localizer\Localizer.cs" />
     <Compile Include="Assets\Timer.cs" />

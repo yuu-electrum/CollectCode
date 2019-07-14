@@ -9,7 +9,7 @@ namespace Game.Playable
     /// <summary>
     /// ソースコードのチャンクを表すクラス
     /// </summary>
-    public class Chunk : MonoBehaviour
+    public class Chunk : MonoBehaviour, IDestroyable
     {
         private int _index;
 
@@ -23,5 +23,6 @@ namespace Game.Playable
 
         public TextMesh Text  { get { return _text;  } }
         public int ChunkIndex { get { return _index; } }
+        public void Destroy() { Destroy(this.gameObject); }
     }
 }
