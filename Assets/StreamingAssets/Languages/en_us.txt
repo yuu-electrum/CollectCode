@@ -1,0 +1,5 @@
+StartButton Start
+Remaining Objectives {0} Remaining
+CurrentPhase Phase {0} of {1}
+GameOver Gameover
+Retry Retry

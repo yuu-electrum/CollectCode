@@ -28,10 +28,11 @@ namespace Game.Title
             // ローカライザーの設定
             _localizer = new Localization.Localizer();
 
-            
+            // 言語設定をPlayerPrefsから読み込む
+            var lang = PlayerPrefs.GetString("Language", "ja");
 
-            _localizer.LoadLocalize(Application.streamingAssetsPath + "/Languages/ja.txt", "ja");
-            _localizer.Language = "ja";
+            _localizer.LoadLocalize(string.Format(Application.streamingAssetsPath + "/Languages/{0}.txt", lang), lang);
+            _localizer.Language = lang;
 
             _startButton.Label.text = _localizer.GetLocalize("StartButton");
             
@@ -62,6 +63,12 @@ namespace Game.Title
         public void OnPointerExitAtStartButton()
         {
             _cursor.SetActive(false);
+        }
+
+        public void ChangeLanguage(string lang)
+        {
+            PlayerPrefs.SetString("Language", lang);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
 }

@@ -66,10 +66,12 @@ namespace Game.Localization
             // 各行を空白で区切りコレクションに入れる
             foreach(var line in raw)
             {
-                var ss = line.Split(" ".ToCharArray());
-                if(ss.Length <= 1) { continue; }
+                var center = line.IndexOf(" ");
 
-                _localizes[lang].Add(ss[0], ss[1]);
+                var key = line.Substring(0, center);
+                var val = line.Substring(center + 1);
+
+                _localizes[lang].Add(key, val);
             }
 
             return true;

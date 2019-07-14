@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CodeChunk
   - Ball
+  - LifeGauge
   layers:
   - Default
   - TransparentFX

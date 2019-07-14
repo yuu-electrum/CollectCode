@@ -44,8 +44,11 @@ namespace Game.UI
         {
             _localizer = new Localizer();
 
-            _localizer.LoadLocalize(Application.streamingAssetsPath + "/Languages/ja.txt", "ja");
-            _localizer.Language = "ja";
+            var lang         = PlayerPrefs.GetString("Language", "ja");
+            var localizePath = string.Format(Application.streamingAssetsPath + "/Languages/{0}.txt", lang);
+
+            _localizer.LoadLocalize(localizePath, lang);
+            _localizer.Language = lang;
         }
 
         public void Update()

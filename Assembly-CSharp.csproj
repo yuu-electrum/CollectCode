@@ -82,11 +82,15 @@
     <Compile Include="Assets\IDestroyable.cs" />
     <Compile Include="Assets\IFade.cs" />
     <Compile Include="Assets\Localizer\Localizer.cs" />
+    <Compile Include="Assets\Preferences.cs" />
     <Compile Include="Assets\Timer.cs" />
+    <Compile Include="Assets\Title\Languages.cs" />
     <Compile Include="Assets\Title\Logo.cs" />
     <Compile Include="Assets\Title\StartButton.cs" />
     <Compile Include="Assets\Title\Title.cs" />
     <None Include="Assets\StreamingAssets\Languages\ja.txt" />
+    <None Include="Assets\StreamingAssets\Languages\en_us.txt" />
+    <None Include="Assets\StreamingAssets\Languages\de.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/uwanoyu/UnityProjects/CollectCode/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -642,7 +646,6 @@
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2019.1.9f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
-    <Compile Include="Assets\Preferences.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
