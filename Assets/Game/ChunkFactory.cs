@@ -39,13 +39,18 @@ namespace Game.Playable
 
             foreach(var c in _chunks)
             {
-                if(c.Key < start || c.Key > end) { continue; }
+                if(c.Key < start || c.Key > end - 1) { continue; }
 
                 // 範囲内にあるチャンク
                 var newObj = (dest == null) ? Instantiate(_origin) : Instantiate(_origin, dest);
 
-                // 文字を設定する
-                newObj.GetComponent<TextMesh>().text = c.Value;
+                // チャンクを識別するための情報を付与する
+                var comp = newObj.GetComponent<Chunk>();
+
+                comp.Initialize(c.Key);
+                comp.Text.text = c.Value;
+
+                objs.Add(newObj);
             }
 
             _currentChunk = end;

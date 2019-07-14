@@ -10,10 +10,18 @@ namespace Game.Playable
     public class GameManager : MonoBehaviour
     {
         [SerializeField]
+        Timer _timer;
+
+        [SerializeField]
         ChunkFactory _factory;
 
         [SerializeField]
+        ChunkOrganizer _organizer;
+
+        [SerializeField]
         GameObject _chunkParent;
+
+        private SortedDictionary<int, string> _collectedChunks;
 
         public void Start()
         {
@@ -28,8 +36,8 @@ namespace Game.Playable
             var index   = UnityEngine.Random.Range(0, targets.Count);
 
             _factory.Initialize(targets[index]);
-            _factory.GetNextChunks(4, _chunkParent.transform);
-            _factory.GetNextChunks(4, _chunkParent.transform);
+
+            _collectedChunks = new SortedDictionary<int, string>();
         }
     }
 }

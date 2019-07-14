@@ -24,7 +24,9 @@ namespace Game
         public Vector3 BottomLeft  { get { return _bottomLeft;  } }
         public Vector3 BottomRight { get { return _bottomRight; } }
 
-        public void UpdateViewport()
+        public Camera Camera { get { return _camera; } }
+
+        public void UpdatePosition()
         {
             if(_camera == null) { return; }
 

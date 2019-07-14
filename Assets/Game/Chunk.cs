@@ -6,8 +6,22 @@ using UnityEngine.UI;
 
 namespace Game.Playable
 {
-    public class Chunk
+    /// <summary>
+    /// ソースコードのチャンクを表すクラス
+    /// </summary>
+    public class Chunk : MonoBehaviour
     {
+        private int _index;
 
+        [SerializeField]
+        private TextMesh _text;
+
+        public void Initialize(int index)
+        {
+            _index = index;
+        }
+
+        public TextMesh Text  { get { return _text;  } }
+        public int ChunkIndex { get { return _index; } }
     }
 }
