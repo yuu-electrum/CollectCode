@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace Game.Playable
 {
@@ -24,6 +25,15 @@ namespace Game.Playable
             _balls = new List<GameObject>();
         }
 
+        public void Update()
+        {
+            if(IsAllOutOfStage)
+            {
+                _balls.ForEach((x) => { Destroy(x.gameObject); });
+                _balls.Clear();
+            }
+        }
+
         public void Generate()
         {
             var obj = Instantiate(_origin);
@@ -41,7 +51,10 @@ namespace Game.Playable
         {
             get
             {
-                return true;
+                return _balls.All((b) => {
+                    var vp = _wpViewport.Camera.WorldToViewportPoint(b.transform.position);
+                    return vp.y < 0.0f;
+                });
             }
         }
     }

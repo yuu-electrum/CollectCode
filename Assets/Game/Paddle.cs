@@ -33,6 +33,8 @@ namespace Game.Playable
 
         public void Update()
         {
+            if(IsComplete) { return; }
+
             var pos = this.transform.position;
 
             // Shiftを押している間は移動速度を落とす
@@ -68,11 +70,16 @@ namespace Game.Playable
             for(;;)
             {
                 // フェードアウト処理
-                pos.y -= VELOCITY * 2.0f;
+                pos.y -= 3.0f;
                 Vector3 vp = _wpViewport.Camera.WorldToViewportPoint(pos);
                 this.transform.position = _wpViewport.Camera.ViewportToWorldPoint(vp);
 
-                if(vp.y < 0.0f) { yield break; }
+                if(vp.y < 0.0f)
+                {
+                    isFadingOut = false;
+                    isFadedOut  = true;
+                    yield break;
+                }
                 yield return null;
             }
         }

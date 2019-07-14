@@ -12,8 +12,9 @@ namespace Game.Playable
     /// </summary>
     public class ChunkFactory : MonoBehaviour
     {
-        private const int MAX_PHASE = 1;
-        private const int UNIT      = 1;
+        public const int MAX_PHASE  = 3;
+        public const int UNIT       = 4;
+        public const int GROUP_UNIT = 30;
 
         public enum State { HAS_REMAINING_PHASE, NO_REMAINING_PHASE, FINISHED }
 
@@ -49,7 +50,7 @@ namespace Game.Playable
         /// <summary>
         /// 次のフェーズのチャンクを生成する
         /// </summary>
-        public List<GameObject> GetNextPhase()
+        public List<GameObject> GetNextPhase(Transform parent = null)
         {
             _currentPhase++;
 
@@ -62,8 +63,12 @@ namespace Game.Playable
 
             // まだ生成されていないチャンクの中から選ぶ
             // TODO: めっちゃ短い時にはUNITの値を変えなければならない
-            var pendings = new List<int>();
-            while(pendings.Count < UNIT)
+            var pendings  = new List<int>();
+
+            // 選ばれていないチャンクの数がチャンクの単位より少ない場合にはその値に合わせる
+            var groupUnit = unselected.Count >= GROUP_UNIT ? GROUP_UNIT : unselected.Count;
+
+            while(pendings.Count < groupUnit)
             {
                 int index = UnityEngine.Random.Range(0, unselected.Count - 1);
                 if(pendings.Contains(index)) continue;
@@ -78,7 +83,7 @@ namespace Game.Playable
 
             foreach(var idx in pendings)
             {
-                var obj = Instantiate(_origin);
+                var obj = parent == null ? Instantiate(_origin) : Instantiate(_origin, parent);
 
                 obj.GetComponent<Chunk>().Text.text = _chunks[idx];
                 newlyGeneratedChunks.Add(obj);
