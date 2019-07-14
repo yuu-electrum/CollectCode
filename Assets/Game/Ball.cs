@@ -36,6 +36,8 @@ namespace Game.Playable
 
         public void OnTriggerEnter(Collider other)
         {
+            Debug.Log(other.name);
+
             // ボールを反射させる
             var colliderVec = other.transform.up;
             float distance  = Mathf.Abs(Vector3.Dot(_dir, colliderVec));
