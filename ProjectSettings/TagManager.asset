@@ -7,6 +7,7 @@ TagManager:
   - CodeChunk
   - Ball
   - LifeGauge
+  - NationalFlag
   layers:
   - Default
   - TransparentFX

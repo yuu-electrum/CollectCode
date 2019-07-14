@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 645872955}
   m_Layer: 0
   m_Name: German
-  m_TagString: Untagged
+  m_TagString: NationalFlag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 747694960}
   m_Layer: 0
   m_Name: English (US)
-  m_TagString: Untagged
+  m_TagString: NationalFlag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 1724992930}
   m_Layer: 0
   m_Name: Japanese
-  m_TagString: Untagged
+  m_TagString: NationalFlag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1346,6 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f597db36118746af9dc825853a8ef29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wpViewport: {fileID: 0}
 --- !u!1 &1930598346
 GameObject:
   m_ObjectHideFlags: 0

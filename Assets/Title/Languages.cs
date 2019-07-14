@@ -33,12 +33,37 @@ namespace Game.Title
 
         public IEnumerator StartFadeout()
         {
-            var rb = this.gameObject.AddComponent<Rigidbody>();
-            rb.AddForce(new Vector3(0.0f, 128.0f, 0.0f));
+            var objs     = new List<GameObject>(GameObject.FindGameObjectsWithTag("NationalFlag"));
+            var buttons  = new List<Button>();
 
+            objs.ForEach((x) => { buttons.Add(x.GetComponent<Button>()); });
+
+            if(objs == null) yield break;
+
+            var frame = 0;
+
+            // 40フレームかけて透明になっていく
             for(;;)
             {
-                
+                foreach(var btn in buttons)
+                {
+                    var pos = btn.gameObject.transform.position;
+                    pos.x -= 4.0f;
+                    btn.gameObject.transform.position = pos;
+
+                    var colors = btn.colors;
+                    colors.normalColor = new Color(1.0f, 1.0f, 1.0f, 1 * (float)(frame / 40));
+                    btn.colors = colors;
+                }
+
+                frame++;
+                if(frame == 40)
+                {
+                    isComplete = true;
+                    yield break;
+                }
+
+                yield return null;
             }
         }
 
