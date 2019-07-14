@@ -75,6 +75,7 @@
     <Compile Include="Assets\Game\LifeManager.cs" />
     <Compile Include="Assets\Game\Paddle.cs" />
     <Compile Include="Assets\Game\UI\CanvasManager.cs" />
+    <Compile Include="Assets\Game\UI\FinishedCanvas.cs" />
     <Compile Include="Assets\Game\UI\Phase.cs" />
     <Compile Include="Assets\Game\UI\Scroller.cs" />
     <Compile Include="Assets\Game\Wall.cs" />

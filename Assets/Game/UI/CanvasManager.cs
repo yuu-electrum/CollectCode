@@ -18,7 +18,13 @@ namespace Game.UI
         [SerializeField]
         private GameObject _originalGauge;
 
+        [SerializeField]
+        private GameObject _originalFinishedCanvas;
+
         #region Models
+
+        [SerializeField]
+        private GameManager _gameManager;
 
         private Localizer _localizer;
 
@@ -38,7 +44,12 @@ namespace Game.UI
         [SerializeField]
         public GameObject _lifeGauge;
 
+        [SerializeField]
+        public Text _remaining;
+
         #endregion
+
+        private bool _isFinishedCanvasShown = false;
 
         public void Start()
         {
@@ -53,11 +64,46 @@ namespace Game.UI
 
         public void Update()
         {
+            if(_isFinishedCanvasShown)  { return; }
+
+            if(_chunkFactory.CurrentState == ChunkFactory.State.FINISHED && !_gameManager.IsGameover)
+            {
+                // ゲームクリアの画面を表示する
+                var obj = Instantiate(_originalFinishedCanvas, this.transform).GetComponent<FinishedCanvas>();
+                obj.Text.text             = _localizer.GetLocalize("Finish");
+                obj.RetryLabel.text       = _localizer.GetLocalize("Retry");
+                obj.BackToTitleLabel.text = _localizer.GetLocalize("BackToTitle");
+
+                _isFinishedCanvasShown = true;
+                _remaining.gameObject.SetActive(false);
+                _lifeGauge.SetActive(false);
+                return;
+            }
+
+            if(_gameManager.IsGameover)
+            {
+                // ゲームオーバーの画面を表示する
+                var obj = Instantiate(_originalFinishedCanvas, this.transform).GetComponent<FinishedCanvas>();
+                obj.Text.text             = _localizer.GetLocalize("GameOver");
+                obj.RetryLabel.text       = _localizer.GetLocalize("Retry");
+                obj.BackToTitleLabel.text = _localizer.GetLocalize("BackToTitle");
+
+                _isFinishedCanvasShown = true;
+                _remaining.gameObject.SetActive(false);
+                _lifeGauge.SetActive(false);
+                return;
+            }
+
             _currentPhase.text = _localizer.GetFormattedString(
                 "CurrentPhase",
                 _chunkFactory.CurrentPhase,
                 _chunkFactory.MaxPhase
             );
+
+            //=====================================================
+            // 残りのチャンク数を表示する
+            //=====================================================
+            _remaining.text = _localizer.GetFormattedString("Remaining", _gameManager.CurrentChunkCount);
 
             //=====================================================
             // 残機を表示する

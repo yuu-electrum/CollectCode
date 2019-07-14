@@ -14,7 +14,7 @@ namespace Game.Playable
     {
         public const int MAX_PHASE  = 3;
         public const int UNIT       = 4;
-        public const int GROUP_UNIT = 30;
+        public const int GROUP_UNIT = 40;
 
         public enum State { HAS_REMAINING_PHASE, NO_REMAINING_PHASE, FINISHED }
 

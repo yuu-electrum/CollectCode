@@ -1,5 +1,7 @@
 StartButton Starten
 Remaining {0} Objective Verbleibend
 CurrentPhase Stufe {0} von {1}
+Finish Abgeschlossen!
 GameOver Gameover
 Retry Neu Spielen
+BackToTitle Zurück zum Titel

@@ -22,7 +22,7 @@ namespace Game.Playable
 
         public void Start()
         {
-            Speed = 8.0f;
+            Speed = 6.0f;
             _dir = new Vector3(-1.0f, -1.0f, 0.0f).normalized * Speed;
         }
 

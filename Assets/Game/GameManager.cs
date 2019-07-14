@@ -33,6 +33,9 @@ namespace Game.Playable
         [SerializeField]
         LifeManager _life;
 
+        // 今のチャンク数
+        public int CurrentChunkCount { get { return _generatedChunks.Count; } }
+
         // 再生成したチャンク数
         public List<GameObject> _generatedChunks;
 
@@ -40,6 +43,7 @@ namespace Game.Playable
         private bool _finished = false;
 
         // ゲームオーバーになったか
+        public bool IsGameover { get { return _isGameover; } }
         private bool _isGameover = false;
 
         public void Start()
